@@ -3,8 +3,6 @@ import numpy as np
 
 
 def gauss(a, b):
-    x = 0
-
     print(a)
     print(b)
     print("-------------")
@@ -25,10 +23,15 @@ def gauss(a, b):
             if a[j][i] != 0:
                 b[j] -= a[j][i] * np.asarray(b[i])
                 a[j] -= a[j][i] * np.asarray(a[i])
-    print(a)
-    print(b)
 
-    return x
+    for i in range(len(a)):
+        for j in range(i + 1, len(a)):
+            if a[i][j] != 0:
+                b[i] -= a[i][j] * np.asarray(b[j])
+                a[i] -= a[i][j] * np.asarray(a[j])
+    print(a)
+
+    return b
 
 
 # def dimensionsmatrix(n):
@@ -46,11 +49,11 @@ def gauss(a, b):
 #         matrix[i] = 1 / i + 1
 #     return matrix
 
-
-arr = np.array([[1, 3, 1, 1], [0, 1, 0, 2], [2, 1, 0, 0], [0, 4, 4, 0]], dtype=float)
-vector = np.array([6, 2, 4, 12], dtype=float)
-# print(gauss(arr, vector))
-dimM5 = [[1, 1 / 2, 1 / 3, 1 / 4, 1 / 5], [1 / 2, 1 / 3, 1 / 4, 1 / 5, 1 / 6], [1 / 3, 1 / 4, 1 / 5, 1 / 6, 1 / 7],
-         [1 / 4, 1 / 5, 1 / 6, 1 / 7, 1 / 8], [1 / 5, 1 / 6, 1 / 7, 1 / 8, 1 / 9]]
-dimV5 = [1 / 2, 1 / 3, 1 / 4, 1 / 5, 1 / 6]
-print(gauss(dimM5, dimV5))
+if __name__ == '__main__':
+    arr = np.array([[1, 3, 1, 1], [0, 1, 0, 2], [2, 1, 0, 0], [0, 4, 4, 0]], dtype=float)
+    vector = np.array([6, 2, 4, 12], dtype=float)
+    print(gauss(arr, vector))
+    dimM5 = [[1, 1 / 2, 1 / 3, 1 / 4, 1 / 5], [1 / 2, 1 / 3, 1 / 4, 1 / 5, 1 / 6], [1 / 3, 1 / 4, 1 / 5, 1 / 6, 1 / 7],
+            [1 / 4, 1 / 5, 1 / 6, 1 / 7, 1 / 8], [1 / 5, 1 / 6, 1 / 7, 1 / 8, 1 / 9]]
+    dimV5 = [1 / 2, 1 / 3, 1 / 4, 1 / 5, 1 / 6]
+    #print(gauss(dimM5, dimV5))
