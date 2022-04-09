@@ -31,8 +31,31 @@ def permutation(p, x):
     return x
 
 
+def vorwaerts(a, x):
+    y = x
+    for i in range(len(a)):
+        for j in range(i):
+            y[i] -= a[i][j] * y[j]
+    return y
+
+
+def rueckwaerts(a, x):
+    y = np.zeros(len(a), dtype=float)
+    for i in range(len(a)):
+        enumerator = x[len(a) - i - 1]
+        for j in range(i):
+            enumerator -= a[len(a) - i - 1][len(a) - j - 1] * y[len(a) - j - 1]
+        y[len(a) - i - 1] = enumerator / a[len(a) - i - 1][len(a) - i - 1]
+    return y
+
+
 if __name__ == '__main__':
     arr = np.array([[0, 0, 0, 1], [2, 1, 2, 0], [4, 4, 0, 0], [2, 3, 1, 0]], dtype=float)
-    b = np.array([3, 5, 4, 5], dtype=float)
     print(arr)
-    print(permutation(zerlegung(arr)[1], b))
+    b = np.array([3, 5, 4, 5], dtype=float)
+    lu, p = zerlegung(arr)
+    print(lu)
+    bperm = permutation(p, b)
+    v = vorwaerts(lu, bperm)
+    r = rueckwaerts(lu, v)
+    print(r)
