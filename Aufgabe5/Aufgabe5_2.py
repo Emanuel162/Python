@@ -16,6 +16,7 @@ def gs():
         x[-1] = (-f - e * x[-2])
     return x
 
+
 if __name__ == '__main__':
     gs()
     print(gs())
