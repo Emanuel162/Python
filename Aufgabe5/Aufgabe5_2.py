@@ -1,5 +1,4 @@
 from numpy import zeros
-import numpy as np
 
 
 def gs():
