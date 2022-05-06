@@ -14,7 +14,7 @@ def MaximumNeben(A):
     for i in range(len(A)):
         B[i][i] = 0
 
-    i, j = unravel_index(argmax(B), B.shape)
+    i, j = unravel_index(argmax(abs(B)), B.shape)
     return min(i, j), max(i, j)
 
 
