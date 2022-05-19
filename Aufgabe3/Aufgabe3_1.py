@@ -47,6 +47,7 @@ def rueckwaerts(a, x):
         y[len(a) - i - 1] = enumerator / a[len(a) - i - 1][len(a) - i - 1]
     return y
 
+
 def dimensionsmatrix(n):
     matrix = np.zeros((n, n), dtype=float)
     for i in range(len(matrix)):
@@ -61,6 +62,7 @@ def dimensionsvector(n):
     for i in range(len(matrix)):
         matrix[i] = 1 / (i + 2)
     return matrix
+
 
 if __name__ == '__main__':
     # arr = np.array([[0, 0, 0, 1], [2, 1, 2, 0], [4, 4, 0, 0], [2, 3, 1, 0]], dtype=float)
