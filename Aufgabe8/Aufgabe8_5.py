@@ -27,8 +27,9 @@ def hornerSchema(x_werte, dividierte, x):
     for i in reversed(range(1, len(x_werte))):
         res += dividierte[i]
 
-        for j in x_werte-1:
+        for j in range(len(x_werte) - 1):
             res *= (x-x_werte[j])
+        res += dividierte[i-1]
         print(res)
     return res
 
