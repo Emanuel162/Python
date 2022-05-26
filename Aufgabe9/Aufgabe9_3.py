@@ -16,7 +16,7 @@ def createPoints(m):
     tis = zeros(m)
     for i in range(m):
         tis[i] = 2 * (i - 1) / (m - 1)
-    print("tis = ", tis)
+    # print("tis = ", tis)
     gamma = ndarray((2, len(tis)))
     for i in range(gamma.shape[1]):
         gamma[0][i] = x(tis[i])
@@ -36,7 +36,6 @@ def splines(xis, yis, s):
         a[i][i - 1] = h_alt
         a[i][i] = 2 * (h_neu + h_alt)
         a[i][i + 1] = h_neu
-    # print(len(xis) - 2)
     a[len(xis) - 3][len(xis) - 4] = h_neu
     h_alt = h_neu
     h_neu = xis[-1] - xis[len(xis) - 2]
@@ -57,16 +56,18 @@ def splines(xis, yis, s):
     for i in range(len(xis) - 1):
         s3 = f'{yis[i]} + {alpha[i]}*(x - {xis[i]}) + {beta[i] / 2} * (x - {xis[i]})^2 + {(beta[i + 1] - beta[i]) / 6 * (xis[i + 1] - xis[i])} * (x - {xis[i]})^3'
         print(f'{s} auf dem Interval [{xis[i]}, {xis[i + 1]}] : {s3}.')
-    return a
 
 
 def main():
-    tis, gamma = createPoints(5)
-    print(gamma)
-    print("sx")
-    sx = splines(tis, gamma[0], "sx")
-    print("sy")
-    sy = splines(tis, gamma[1], "sy")
+    ms = [5, 7, 9, 11, 17]
+    for m in ms:
+        print()
+        print(f'm = {m}')
+        tis, gamma = createPoints(m)
+        print("sx")
+        splines(tis, gamma[0], "sx")
+        print("sy")
+        splines(tis, gamma[1], "sy")
 
 
 if __name__ == '__main__':

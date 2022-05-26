@@ -28,7 +28,6 @@ def splines(xis, yis):
         a[i][i - 1] = h_alt
         a[i][i] = 2 * (h_neu + h_alt)
         a[i][i + 1] = h_neu
-    # print(len(xis) - 2)
     a[len(xis) - 3][len(xis) - 4] = h_neu
     h_alt = h_neu
     h_neu = xis[-1] - xis[len(xis) - 2]
@@ -53,9 +52,6 @@ def splines(xis, yis):
 
 
 def main():
-    # xis, yis = createPoints(5)
-    # print(createPoints(5))
-    # print(splines(xis, yis))
     ms = [5, 7, 9, 11, 17]
     for m in ms:
         print()
